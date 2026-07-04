@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indian Cooking Planner & Todo List</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode">
+  <header class="app-header">
+    <div class="logo">
+      <span class="logo-accent">🍳 COOKING</span>TODO
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section id="planner-tab" class="tab-content active" role="tabpanel">
+      <div class="grid-container">
+        <!-- Sidebar Controls -->
+        <aside class="control-panel card">
+          <h2>Plan Your Day</h2>
+          <form id="planner-form" onsubmit="event.preventDefault();">
+            <div class="input-group">
+              <label for="day-select">Select Day Profile</label>
+              <select id="day-select" aria-describedby="day-desc">
+                <option value="busy">Meeting Heavy (Very Busy)</option>
+                <option value="moderate">Standard Workday (Moderate)</option>
+                <option value="weekend">Relaxed Weekend (Free Time)</option>
+              </select>
+              <small id="day-desc" class="helper-text">Matches meal complexity to your schedule density.</small>
+            </div>
+
+            <div class="input-group">
+              <label for="budget-slider">Daily Budget: <span id="budget-value">₹300</span></label>
+              <input type="range" id="budget-slider" min="100" max="1000" step="50" value="300" aria-valuemin="100" aria-valuemax="1000" aria-valuenow="300">
+              <div class="budget-scale text-muted">
+                <span>₹100 (Budget)</span>
+                <span>₹1000 (Premium)</span>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="diet-select">Dietary Preferences</label>
+              <select id="diet-select">
+                <option value="veg">Pure Veg</option>
+                <option value="non-veg">Non-Veg</option>
+                <option value="jain-friendly">Jain (No Onion/Garlic)</option>
+                <option value="eggitarian">Eggitarian</option>
+              </select>
+            </div>
+
+            <button type="button" id="generate-btn" class="btn-primary">Generate Meal Plan</button>
+          </form>
+        </aside>
+
+        <!-- Main Display -->
+        <div class="display-panel">
+          <!-- Meal Cards -->
+          <div class="card main-plan-card">
+            <div class="plan-header">
+              <h2>Your Personalized Meal Plan</h2>
+              <span class="badge" id="schedule-badge">Moderate day</span>
+            </div>
+            <div class="meals-grid" id="meals-container">
+              <!-- Breakfast, Lunch, Dinner populated dynamically -->
+              <div class="empty-state">
+                <p>Select your day profile and click <strong>Generate Meal Plan</strong> to start cooking.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Columns: Grocery List & Kitchen Guide -->
+          <div class="bottom-grid">
+            <div class="card grocery-card">
+              <h2>Grocery Checklist</h2>
+              <div id="grocery-container">
+                <p class="text-muted">No items yet.</p>
+              </div>
+              <div class="budget-status" id="budget-status-box" aria-live="polite">
+                <!-- Budget verification status -->
+              </div>
+            </div>
+
+            <div class="card step-by-step-card">
+              <h2>Kitchen Guide</h2>
+              <div id="guide-container">
+                <p class="text-muted">Generate a plan to see cooking steps.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Indian Cooking Planner & Todo List App | Hackathon Submission</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
